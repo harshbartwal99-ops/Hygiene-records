@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: hygiene-records
+    runtime: node
+    plan: starter
+    buildCommand: echo "nothing to build"
+    startCommand: npm start
+    healthCheckPath: /manifest.webmanifest
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      - key: DB_FILE
+        value: /var/data/hygiene.db
+    disk:
+      name: hygiene-data
+      mountPath: /var/data
+      sizeGB: 1

@@ -1,0 +1,69 @@
+:root{--bg:#f5f7f6;--card:#fff;--ink:#14201e;--mute:#5b6b68;--line:#dfe6e4;--brand:#0f766e;--brand-d:#0b5a54;--ok:#15803d;--okbg:#e7f6ec;--warn:#b45309;--warnbg:#fff4e0;--bad:#b91c1c;--badbg:#fdeaea;--r:14px}
+@media(prefers-color-scheme:dark){:root{--bg:#0e1514;--card:#16201f;--ink:#e8f0ee;--mute:#9db0ac;--line:#263634;--brand:#2dd4bf;--brand-d:#5eead4;--okbg:#10301d;--warnbg:#3a2a0b;--badbg:#3b1414;--ok:#4ade80;--warn:#fbbf24;--bad:#f87171}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
+button,input,select,textarea{touch-action:manipulation}
+/* iOS Safari: remove native styling that breaks sizing, keep inputs at 16px+ so the page never auto-zooms */
+input,select,textarea,button{-webkit-appearance:none;appearance:none;font-size:16px;border-radius:12px}
+input[type=checkbox]{-webkit-appearance:auto;appearance:auto}
+input[type=date]{min-height:48px;display:block;text-align:left}
+input[type=date]::-webkit-date-and-time-value{text-align:left;min-height:1.4em}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235b6b68' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.btn.sm,nav.tabs button{font-size:14px}nav.tabs button{font-size:12px}
+#app{max-width:640px;margin:0 auto;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+header.top{padding:calc(14px + env(safe-area-inset-top)) 16px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+header.top h1{font-size:18px;margin:0}header.top small{color:var(--mute);display:block;font-weight:400;font-size:13px}
+main{flex:1;padding:0 16px 96px}
+nav.tabs{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom);z-index:5}
+nav.tabs .in{display:flex;width:100%;max-width:640px}
+nav.tabs button{flex:1;background:none;border:0;padding:10px 2px 8px;font:inherit;font-size:12px;color:var(--mute);display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer}
+nav.tabs button span.ic{font-size:20px;line-height:1}
+nav.tabs button[aria-current=page]{color:var(--brand);font-weight:600}
+h2{font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);margin:22px 2px 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:10px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.stack{display:flex;flex-direction:column;gap:10px}
+.mute{color:var(--mute);font-size:14px}
+.pill{display:inline-block;padding:3px 10px;border-radius:99px;font-size:13px;font-weight:600}
+.pill.ok{background:var(--okbg);color:var(--ok)}.pill.due{background:var(--warnbg);color:var(--warn)}.pill.alert{background:var(--badbg);color:var(--bad)}
+.tap{width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer}
+button.card.tap{display:block}
+.btn{font:inherit;font-weight:600;border:0;border-radius:12px;padding:13px 16px;background:var(--brand);color:#fff;cursor:pointer;min-height:48px}
+@media(prefers-color-scheme:dark){.btn{color:#04201c}}
+.btn.sec{background:transparent;color:var(--brand);border:1.5px solid var(--brand)}
+.btn.danger{background:var(--bad);color:#fff}
+.btn.sm{padding:8px 12px;min-height:36px;font-size:14px;border-radius:10px}
+.btn:disabled{opacity:.55}
+.btn.block{width:100%}
+label{display:block;font-size:14px;font-weight:600;margin:12px 0 4px}
+input,select,textarea{width:100%;font:inherit;padding:12px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--brand);border-color:transparent}
+textarea{min-height:80px;resize:vertical}
+.temp-input{font-size:34px;font-weight:700;text-align:center;padding:14px}
+.alertbox{background:var(--badbg);color:var(--bad);border-radius:12px;padding:10px 12px;margin-top:12px;font-weight:600;font-size:14px}
+.okbox{background:var(--okbg);color:var(--ok);border-radius:12px;padding:10px 12px;margin-top:12px;font-weight:600;font-size:14px}
+.big{font-size:28px;font-weight:700;line-height:1.1}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.check{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+.check:last-child{border-bottom:0}
+.check input[type=checkbox]{width:26px;height:26px;flex:none;margin:1px 0 0;accent-color:var(--brand)}
+.check .t{flex:1}.check .note{margin-top:8px}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:flex-end;justify-content:center;z-index:20}
+.modal{background:var(--bg);width:100%;max-width:640px;max-height:92vh;max-height:92dvh;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;border-radius:20px 20px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom))}
+.modal h3{margin:0 0 4px;font-size:20px}
+.err{color:var(--bad);font-weight:600;font-size:14px;margin-top:10px}
+#toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);background:#14201e;color:#fff;padding:10px 16px;border-radius:99px;opacity:0;pointer-events:none;transition:.25s;z-index:30;font-size:14px;max-width:90vw}
+#toast.show{opacity:1;transform:translateX(-50%)}
+.auth{padding:calc(40px + env(safe-area-inset-top)) 20px 20px}
+.auth h1{margin:0 0 4px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:6px 6px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--mute);font-weight:600}
+tr.bad td{background:var(--badbg);color:var(--bad)}
+.scroll{overflow-x:auto}
+.seg{display:flex;gap:6px;margin:6px 0}.seg button{flex:1}
+@media print{
+  body{background:#fff;color:#000}nav.tabs,header.top,.noprint,#toast{display:none!important}
+  main{padding:0}.card{border:1px solid #999;break-inside:avoid}table{font-size:11px}
+  .printonly{display:block!important}
+}
+.printonly{display:none}

@@ -1,0 +1,11 @@
+{
+  "name": "hygiene-records",
+  "version": "1.0.0",
+  "description": "Digital food hygiene records: temperature logs and cleaning checklists for restaurants and hospitality.",
+  "private": true,
+  "engines": { "node": ">=22.5" },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server.js",
+    "test": "node --disable-warning=ExperimentalWarning test.js"
+  }
+}
