@@ -1,5 +1,11 @@
 'use strict';
 // Hygiene Records front end. Plain JS, no build step. All text is set via textContent (no innerHTML).
+// DOM helpers: accept nested arrays and skip null/false, so lists of elements render as elements (not text).
+const flatKids = (a) => a.flat(Infinity).filter((x) => x != null && x !== false);
+for (const m of ['append', 'replaceChildren']) {
+  const orig = Element.prototype[m];
+  Element.prototype[m] = function (...a) { return orig.apply(this, flatKids(a)); };
+}
 const $app = document.getElementById('app');
 const S = { token: localStorage.getItem('token'), me: null, site: null, today: null, tab: 'today' };
 
@@ -13,7 +19,7 @@ function h(tag, props, ...kids) {
     else if (k in el && k !== 'list') el[k] = v;
     else el.setAttribute(k, v === true ? '' : v);
   }
-  for (const kid of kids.flat()) if (kid != null && kid !== false) el.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
+  for (const kid of kids.flat(Infinity)) if (kid != null && kid !== false) el.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
   return el;
 }
 async function api(path, { method = 'GET', body, raw } = {}) {
